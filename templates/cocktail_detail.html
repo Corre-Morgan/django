@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% block content %}
+    {{ object }}
+    <h2>{{ object.title }}</h2>
+    <ul>
+    {% for ingredient in object.ingredients.all %}
+        <li>{{ ingredient }}</li>
+    {% endfor %}
+    </ul>
+
+    <a href="{% url 'app_index' %}">Retour</a>
+{% endblock %}

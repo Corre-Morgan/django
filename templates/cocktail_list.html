@@ -1,0 +1,16 @@
+{%  extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+  <h1>{{title}}</h1>
+  <table>
+      {% for object in object_list %}
+        <tr>
+            <td><h2>{{ object.title }}</h2></td>
+            <td><a href="{% url 'app_cocktail_update' object.pk %}"><button>Update</button></a></td>
+            <td><a href="{% url 'app_cocktail_delete' object.pk %}"><button>Delete</button></a></td>
+        </tr>
+      {% endfor %}
+  </table>
+  <a href="{% url 'app_cocktail_create' %}"><button>Create</button></a>
+{% endblock %}
