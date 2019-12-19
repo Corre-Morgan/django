@@ -25,6 +25,7 @@ from app.views.cocktail.search import CocktailSearchDetailView
 from app.views.cocktail.update import CocktailUpdateView
 from app.views.cocktail.search_by_ingredient import CocktailSearchByIngredientView
 from app.views.index import IndexView
+from app.views.user.register import RegisterView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -36,4 +37,5 @@ urlpatterns = [
     path('cocktails/update/<int:pk>', CocktailUpdateView.as_view(), name='app_cocktail_update'),
     path('cocktails/list', CocktailListView.as_view(), name='app_cocktail_list'),
     path('cocktails/search-by-ingredient/<str:slug>', CocktailSearchByIngredientView.as_view(), name='app_cocktail_list'),
+    path('user/register', RegisterView.as_view(), name='app_register_user'),
 ]
