@@ -17,7 +17,7 @@ class CocktailIngredientUnitInlineAdmin(admin.StackedInline):
 
 
 class CocktailAdmin(admin.ModelAdmin):
-    fields = ('title', 'description')
+    fields = ('title', 'description', 'recipe')
     list_display = ('title', 'custom_description')
     list_display_links = list_display
     inlines = (CocktailIngredientUnitInlineAdmin, CocktailTagInlineAdmin)

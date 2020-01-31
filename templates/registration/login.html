@@ -6,6 +6,8 @@
     <form method="post">
         {% csrf_token %}
         {{ form.as_p }}
-        <button type="submit">Login</button>
+        <button type="submit">Se connecter</button>
+            <a href="{% url 'password_reset' %}">Rénitialiser mot de passe</a>
     </form>
+
 {% endblock %}
