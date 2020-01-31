@@ -15,7 +15,7 @@ Including another URLconf
 """
 from django.conf.urls import url
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include
 
 from app.views.cocktail.create import CocktailCreateView
 from app.views.cocktail.delete import CocktailDeleteView
@@ -25,11 +25,12 @@ from app.views.cocktail.search import CocktailSearchDetailView
 from app.views.cocktail.update import CocktailUpdateView
 from app.views.cocktail.search_by_ingredient import CocktailSearchByIngredientView
 from app.views.index import IndexView
-from app.views.user.register import RegisterView
 
 urlpatterns = [
+    url(r'^$', IndexView.as_view(), name='home'),
+    path('users/', include('users.urls')),
+    path('users/', include('django.contrib.auth.urls')),
     path('admin/', admin.site.urls),
-    url(r'^$', IndexView.as_view(), name='app_index'),
     path('cocktails/detail/<int:pk>', CocktailDetailView.as_view(), name='app_coktail_detail'),
     path('cocktails/detail/search/<str:slug>', CocktailSearchDetailView.as_view(), name='app_coktail_search_detail'),
     path('cocktails/create', CocktailCreateView.as_view(), name='app_cocktail_create'),
@@ -37,5 +38,4 @@ urlpatterns = [
     path('cocktails/update/<int:pk>', CocktailUpdateView.as_view(), name='app_cocktail_update'),
     path('cocktails/list', CocktailListView.as_view(), name='app_cocktail_list'),
     path('cocktails/search-by-ingredient/<str:slug>', CocktailSearchByIngredientView.as_view(), name='app_cocktail_list'),
-    path('user/register', RegisterView.as_view(), name='app_register_user'),
 ]
