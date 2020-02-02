@@ -2,6 +2,7 @@
 {% load static %}
 
 {% block content %}
+  <a href="{% url 'logout' %}">Déconnexion</a>
   <h1>{{title}}</h1>
   <table>
       {% for object in object_list %}
